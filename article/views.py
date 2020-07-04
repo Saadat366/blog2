@@ -26,7 +26,7 @@ def homepage(request):
 def articles(request, tag):
     context = {}
     tag = Tag.objects.get(name=tag)
-    context["articles"] = Artice.objects.filter(tag=tag) #лучше использовать IN list
+    context["articles"] = Article.objects.filter(tag=tag) #лучше использовать IN list
     return render(request, "article/articles.html", context)
 
 def article(request, pk):
