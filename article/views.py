@@ -23,6 +23,12 @@ def homepage(request):
     return render(request, "article/homepage.html", 
         {"articles": articles})
 
+def articles(request, tag):
+    context = {}
+    tag = Tag.objects.get(name=tag)
+    context["articles"] = Artice.objects.filter(tag=tag) #лучше использовать IN list
+    return render(request, "article/articles.html", context)
+
 def article(request, pk):
     article = Article.objects.get(id=pk) #первое id это атрибут объекта Article, к-е джанго создает самостоят, а второе см urls.py
     article.views += 1

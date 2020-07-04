@@ -6,8 +6,9 @@
     <h2>{{ article.title }}</h2>
     {% if article.tag.all|length >= 2 %}
         {% for tag in article.tag.all %}
-            <button>{{ tag.name }}</button>
+            <a class="btn btn-info" href="{% url 'articles' tag.name %}">{{ tag.name }}</a>
         {% endfor %}
+        <br>
         <br>
     {% endif %}
     {% if article.picture %}
